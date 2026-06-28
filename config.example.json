@@ -1,0 +1,23 @@
+{
+  "platforms": [
+    {
+      "platform": "MqttAgate",
+      "name": "MQTT Agate",
+      "mqtt": {
+        "port": 1883,
+        "host": "0.0.0.0",
+        "wsPort": 0,
+        "username": "agate",
+        "password": "change-me",
+        "topicPrefix": "homebridge"
+      },
+      "accessories": [
+        { "id": "lampe_salon", "name": "Lampe salon", "type": "light" },
+        { "id": "var_cuisine", "name": "Variateur cuisine", "type": "dimmer" },
+        { "id": "volet_sejour", "name": "Volet séjour", "type": "cover" },
+        { "id": "ampli_salon", "name": "Musique salon", "type": "speaker" },
+        { "id": "thermo_salon", "name": "Thermostat salon", "type": "thermostat" }
+      ]
+    }
+  ]
+}

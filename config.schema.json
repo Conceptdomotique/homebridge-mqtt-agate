@@ -1,0 +1,89 @@
+{
+  "pluginAlias": "MqttAgate",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Embeds an MQTT broker inside Homebridge. Connect your client (Agate) to it. Each accessory below is exposed to HomeKit and bridged over MQTT.",
+  "footerDisplay": "Topic convention: commands from HomeKit are published to `<prefix>/<id>/set/<property>`, state from your client must be published to `<prefix>/<id>/status/<property>`. See README.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Platform name",
+        "type": "string",
+        "default": "MQTT Agate",
+        "required": true
+      },
+      "mqtt": {
+        "title": "MQTT broker",
+        "type": "object",
+        "properties": {
+          "port": {
+            "title": "TCP port",
+            "type": "integer",
+            "default": 1883,
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "host": {
+            "title": "Bind address",
+            "type": "string",
+            "default": "0.0.0.0",
+            "description": "0.0.0.0 listens on all interfaces."
+          },
+          "wsPort": {
+            "title": "WebSocket port (optional, 0 = disabled)",
+            "type": "integer",
+            "default": 0,
+            "minimum": 0,
+            "maximum": 65535
+          },
+          "username": {
+            "title": "Username (optional)",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password (optional)",
+            "type": "string"
+          },
+          "topicPrefix": {
+            "title": "Topic prefix",
+            "type": "string",
+            "default": "homebridge"
+          }
+        }
+      },
+      "accessories": {
+        "title": "Accessories",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID (unique, used in topics)",
+              "type": "string",
+              "required": true
+            },
+            "name": {
+              "title": "Display name (HomeKit)",
+              "type": "string",
+              "required": true
+            },
+            "type": {
+              "title": "Type",
+              "type": "string",
+              "default": "light",
+              "oneOf": [
+                { "title": "Light (lampe)", "enum": ["light"] },
+                { "title": "Dimmer (variateur)", "enum": ["dimmer"] },
+                { "title": "Shutter (volet)", "enum": ["cover"] },
+                { "title": "Music (enceinte)", "enum": ["speaker"] },
+                { "title": "Thermostat (thermorégulation)", "enum": ["thermostat"] }
+              ],
+              "required": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

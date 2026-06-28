@@ -1,0 +1,42 @@
+{
+  "displayName": "MQTT Agate",
+  "name": "homebridge-mqtt-agate",
+  "version": "1.0.0",
+  "description": "Homebridge platform plugin that embeds its own MQTT broker (server) for the Agate client. Exposes lights, dimmers, shutters (volets), music (speaker) and thermostats to HomeKit, bridged over MQTT.",
+  "license": "MIT",
+  "author": "Concept Domotique",
+  "engines": {
+    "node": ">=18.0.0",
+    "homebridge": ">=1.6.0"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/",
+    "config.schema.json",
+    "config.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node -e \"require('./lib/devices.js'); console.log('load ok')\""
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "mqtt",
+    "broker",
+    "server",
+    "aedes",
+    "homekit",
+    "domotique",
+    "agate",
+    "volet",
+    "dimmer",
+    "thermostat"
+  ],
+  "dependencies": {
+    "aedes": "^0.51.0",
+    "mqtt": "^5.7.0",
+    "ws": "^8.17.0"
+  }
+}
